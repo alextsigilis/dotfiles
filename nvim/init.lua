@@ -7,3 +7,6 @@ vim.opt.expandtab = true
 -- Line numbers
 vim.opt.number = true
 vim.opt.relativenumber = true
+
+-- colorscheme
+vim.cmd [[colorscheme slate]] 
