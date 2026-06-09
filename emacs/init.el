@@ -14,11 +14,18 @@
 (menu-bar-mode -1)
 (global-display-line-numbers-mode)
 
+(set-face-attribute 'default nil
+                    :family "Menlo"
+                    :height 160)
+
 (setq keyboard-translate-table nil)
 (setq display-line-numbers 'relative)
 (setq-local keyboard-coding-system 'utf-8)
-
 (setq visible-bell 1)
+
+;; Window sizes
+(add-to-list 'default-frame-alist '(width . 120))
+(add-to-list 'default-frame-alist '(height . 40))
 
 (require 'ido)
 (setq ido-enable-flex-matching t)  ;; fuzzy matching
@@ -50,12 +57,24 @@
   :commands (magit-status)
   :bind ("C-x g" . magit-status))
 
+;; For macos requires cmake
+(use-package vterm
+  :ensure t
+  :commands vterm
+  :bind (("C-c t" . vterm))
+  :config
+  (setq vterm-max-scrollback 10000))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(doom-themes magit)))
+ '(custom-safe-themes
+   '("5244ba0273a952a536e07abaad1fdf7c90d7ebb3647f36269c23bfd1cf20b0b8"
+     "166a2faa9dc5b5b3359f7a31a09127ebf7a7926562710367086fcc8fc72145da"
+     default))
+ '(package-selected-packages '(doom-themes magit vterm)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
